@@ -39,7 +39,7 @@ sub gen_comparer {
 1;
 # ABSTRACT: Compare similarity to a reference string
 
-=for Pod::Coverage ^(meta|gen_sorter)$
+=for Pod::Coverage ^(meta|gen_comparer)$
 
 =head1 SYNOPSIS
 
