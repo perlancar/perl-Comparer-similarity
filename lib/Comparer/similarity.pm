@@ -1,4 +1,4 @@
-package Comparer::by_similarity;
+package Comparer::similarity;
 
 use 5.010001;
 use strict;
@@ -43,10 +43,11 @@ sub gen_comparer {
 
 =head1 SYNOPSIS
 
- use Comparer::by_similarity;
+ use Comparer::similarity;
 
- my $cmp = Comparer::by_similarity::gen_sorter(string => 'foo');
+ my $cmp = Comparer::similarity::gen_comparer(string => 'foo');
  my @sorted = sort { $cmp->($a,$b) } "food", "foolish", "foo", "bar";
+ # => ("foo","food","bar","foolish")
 
 
 =head1 DESCRIPTION
