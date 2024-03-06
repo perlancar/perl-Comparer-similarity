@@ -25,14 +25,16 @@ sub meta {
 sub gen_comparer {
     my %args = @_;
 
+    my $string = $args{string};
+    my $lc_string = lc $string;
     my $reverse = $args{reverse};
     my $ci = $args{ci};
 
     sub {
         (
-            $args{ci} ? (Text::Levenshtein::XS::distance(lc($args{string}), lc($_[0])) <=> Text::Levenshtein::XS::distance(lc($args{string}), lc($_[1]))) :
-            (Text::Levenshtein::XS::distance($args{string}, $_[0]) <=> Text::Levenshtein::XS::distance($args{string}, $_[1]))
-        ) * ($args{reverse} ? -1 : 1)
+            $ci ? (Text::Levenshtein::XS::distance($lc_string, lc($_[0])) <=> Text::Levenshtein::XS::distance($lc_string, lc($_[1]))) :
+            (Text::Levenshtein::XS::distance($string, $_[0]) <=> Text::Levenshtein::XS::distance($string, $_[1]))
+        ) * ($reverse ? -1 : 1)
     };
 }
 
